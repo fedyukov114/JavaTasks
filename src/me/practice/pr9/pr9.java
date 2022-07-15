@@ -6,9 +6,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class pr9 {
+public class Pr9 {
     public static void main(String[] args) throws Exception {
-        pr9 mainObject = new pr9();
+        Pr9 mainObject = new Pr9();
         Scanner sc = new Scanner(System.in);
         int number = sc.nextInt();
         int sumDigits = 0;
@@ -16,20 +16,22 @@ public class pr9 {
 
         mainObject.createHashMap(fruits);
 
-        //Проверяем больше ли 100 заданное число. От этого зависит способ отсчета
-        if (number > 100) {
-            //Через деление получаем цифры трехзначного числа
-            while (number > 100) {
-                sumDigits = number / 100;
-            }
-        }
+        //Используем цикл do while из-за условия задачи:
+        //в любом случае нужно будет пересчитывать заданное число, а затем искать его в списке.
+        //Далее высчитываем новое число, основываясь на цифрах, из которых состояло старое число.
+        do {
+            sumDigits = number / 100 + number / 10 % 10 + number % 10;
+            System.out.println("Сумма цифр числа = " + sumDigits);
+            number = number - sumDigits;
+            System.out.println("Новое число = " + number);
+        } while (!fruits.containsKey(number));
+        System.out.println("Фрукт, который подходит по получившемуся числу: " + fruits.get(number));
     }
-
 
     //Метод заполняет хеш-мапу значениями из файла.
     public Map<Integer, String> createHashMap(Map<Integer, String> myMap) throws Exception {
         try {
-            FileReader fr = new FileReader("E:\\java\\src\\me\\practice\\pr9\\DataForMap.txt");
+            FileReader fr = new FileReader("E:\\java\\src\\me\\practice\\Pr9\\DataForMap.txt");
             Scanner sc = new Scanner(fr);
             while (sc.hasNextLine()) {
                 int key = sc.nextInt();
@@ -42,7 +44,7 @@ public class pr9 {
             exception.getMessage();
         }
         if (myMap.isEmpty()){
-            System.out.println("Ops, seems like your collection is empty.");
+            System.out.println("Похоже коллекция пуста");
         }
         return myMap;
     }
