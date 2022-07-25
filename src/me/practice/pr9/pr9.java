@@ -32,14 +32,16 @@ public class Pr9 {
             exception.getMessage();
         }
         if (myMap.isEmpty()) {
-            System.out.println("Похоже коллекция пуста");
+            System.out.println("Похоже коллекция пуста!");
         }
         return myMap;
     }
 
     //Метод получает число от пользователя и определяет соответствующий фрукт
     public void findFruit(Map<Integer, String> myMap, int numberFromUser) {
+
         int sumDigits = 0;
+
         //Используем цикл do while из-за условия задачи:
         //в любом случае нужно будет пересчитывать заданное число, а затем искать его в списке.
         //Далее высчитываем новое число, основываясь на цифрах, из которых состояло старое число.
