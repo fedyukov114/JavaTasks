@@ -39,7 +39,6 @@ public class Pr9 {
 
     //Метод получает число от пользователя и определяет соответствующий фрукт
     public void findFruit(Map<Integer, String> myMap, int numberFromUser) {
-
         int sumDigits = 0;
 
         //Используем цикл do while из-за условия задачи:
